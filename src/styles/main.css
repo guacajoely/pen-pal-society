@@ -1,0 +1,17 @@
+ul, li{
+    list-style-type: none;
+}
+
+ul {
+    display: flex;
+    padding-left: 0;
+}
+
+li {
+    padding: 0;
+    margin: 5px;
+}
+
+#letter-submit{
+    margin-top: 20px;
+}

@@ -1,0 +1,47 @@
+{
+    "penpals": [
+        {
+            "id": 1,
+            "name": "Jimbo",
+            "email": "jimbojankins420@yahoo.com"
+        },
+        {
+            "id": 2,
+            "name": "Tammy",
+            "email": "tammy6969@yahoo.com"
+        }
+    ],
+
+    "letters": [
+        {
+            "id": 1,
+            "authorId": 1,
+            "recipientId": 2,
+            "sendDate": "1679587496899",
+            "topic": "friendly"
+        }
+    ],
+
+    "topics": [
+        {
+            "id": 1,
+            "name": "Business"
+        },
+        {
+            "id": 2,
+            "name": "Friendly"
+        },
+        {
+            "id": 3,
+            "name": "Family"
+        },
+        {
+            "id": 4,
+            "name": "Congratulations"
+        },
+        {
+            "id": 5,
+            "name": "Condolences"
+        }
+    ]
+}
