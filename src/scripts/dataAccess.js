@@ -1,5 +1,6 @@
 const applicationState = {}
 const API = "http://localhost:8088"
+const mainContainer = document.querySelector("#container")
 
 export const fetchLetters = () => {
     return fetch(`${API}/letters`)
@@ -23,12 +24,27 @@ export const fetchTopics = () => {
         )
 }
 
+export const fetchPenpals = () => {
+    return fetch(`${API}/penpals`)
+        .then(response => response.json())
+        .then(
+            (responseArray) => {
+                // Store the external state in application state
+                applicationState.penpals = responseArray
+            }
+        )
+}
+
 export const getLetters = () => {
     return applicationState.letters.map(obj => ({ ...obj }))
 }
 
 export const getTopics = () => {
     return applicationState.topics.map(obj => ({ ...obj }))
+}
+
+export const getPenpals = () => {
+    return applicationState.penpals.map(obj => ({ ...obj }))
 }
 
 export const sendLetter = (letter) => {
@@ -43,6 +59,6 @@ export const sendLetter = (letter) => {
     return fetch(`${API}/letters`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            document.dispatchEvent(new CustomEvent("stateChanged"))
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }

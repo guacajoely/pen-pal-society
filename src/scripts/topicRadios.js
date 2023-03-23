@@ -6,7 +6,7 @@ export const createTopicRadios = () => {
 
     const listItemsArray = topics.map(topic => {
 
-            return `<li><input type="radio" name="topic" value="${topic.id}"/> ${topic.name}</li>`
+            return `<li><input type="radio" name="letterTopic" value="${topic.id}"/> ${topic.name}</li>`
     
     })
 

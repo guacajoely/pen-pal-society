@@ -1,4 +1,5 @@
 import { letterForm } from "./letterForm.js"
+import { createLetterList } from "./letters.js"
 
 export const createHTML = () => {
     return `
@@ -8,7 +9,7 @@ export const createHTML = () => {
     </section>
     <section class="letters">
         <h2>Letters</h2>
-
+        ${createLetterList()}
     </section>
     `
 }

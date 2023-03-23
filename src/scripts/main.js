@@ -1,9 +1,10 @@
-import { fetchLetters, fetchTopics } from "./dataAccess.js"
+import { fetchLetters, fetchPenpals, fetchTopics } from "./dataAccess.js"
 import { createHTML } from "./createHTML.js"
 const mainContainer = document.querySelector("#container")
 
 const render = () => {
     fetchLetters()
+        .then(() => fetchPenpals())
         .then(() => fetchTopics())
         .then(
             () => {
@@ -13,4 +14,6 @@ const render = () => {
 
 render()
 
-mainContainer.addEventListener("stateChanged", customEvent => {render()})
+mainContainer.addEventListener("stateChanged", customEvent => {
+    render()
+})
