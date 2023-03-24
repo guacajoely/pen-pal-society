@@ -1,3 +1,4 @@
+@import "form.css";
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
 
 *{
@@ -10,27 +11,4 @@
 
 main {
     margin-left: 20px;
-}
-
-h2 {
-    margin-bottom: 5px;
-}
-
-ul, li{
-    list-style-type: none;
-}
-
-ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    padding: 0;
-    margin: 5px 10px;
-}
-
-#letter-submit{
-    margin-top: 20px;
 }
