@@ -24,6 +24,17 @@ export const fetchTopics = () => {
         )
 }
 
+export const fetchLetterTopics = () => {
+    return fetch(`${API}/letterTopics`)
+        .then(response => response.json())
+        .then(
+            (responseArray) => {
+                // Store the external state in application state
+                applicationState.letterTopics = responseArray
+            }
+        )
+}
+
 export const fetchPenpals = () => {
     return fetch(`${API}/penpals`)
         .then(response => response.json())
@@ -47,6 +58,10 @@ export const getPenpals = () => {
     return applicationState.penpals.map(obj => ({ ...obj }))
 }
 
+export const getLetterTopics = () => {
+    return applicationState.letterTopics.map(obj => ({ ...obj }))
+}
+
 export const sendLetter = (letter) => {
     const fetchOptions = {
         method: "POST",
@@ -57,6 +72,22 @@ export const sendLetter = (letter) => {
     }
 
     return fetch(`${API}/letters`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
+export const sendLetterTopic = (topic) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(topic)
+    }
+
+    return fetch(`${API}/letterTopics`, fetchOptions)
         .then(response => response.json())
         .then(() => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))

@@ -1,0 +1,31 @@
+h2 {
+    margin-bottom: 5px;
+}
+
+ul, li{
+    list-style-type: none;
+}
+
+ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 5px 10px;
+}
+
+#letter-submit{
+    margin-top: 20px;
+}
+
+.letter{
+    margin-top: 20px;
+    padding: 20px;
+    border: thin dotted lightblue;
+    background-color: var(--example-gray-background);
+}
+
+

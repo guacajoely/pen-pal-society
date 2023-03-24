@@ -1,4 +1,4 @@
-import { fetchLetters, fetchPenpals, fetchTopics } from "./dataAccess.js"
+import { fetchLetters, fetchPenpals, fetchTopics, fetchLetterTopics } from "./dataAccess.js"
 import { createHTML } from "./createHTML.js"
 const mainContainer = document.querySelector("#container")
 
@@ -6,6 +6,7 @@ const render = () => {
     fetchLetters()
         .then(() => fetchPenpals())
         .then(() => fetchTopics())
+        .then(() => fetchLetterTopics())
         .then(
             () => {
                 mainContainer.innerHTML = createHTML()

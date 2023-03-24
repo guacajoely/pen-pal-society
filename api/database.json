@@ -13,12 +13,18 @@
   ],
   "letters": [
     {
+      "id": 1,
       "authorId": "1",
       "recipientId": "2",
-      "message": "asdasdasf",
-      "sendDate": 1679600999819,
-      "topicId": "2",
-      "id": 1
+      "message": "Heya Tammy! Whats up?",
+      "sendDate": 1679665988010
+    },
+    {
+      "id": 2,
+      "authorId": "2",
+      "recipientId": "1",
+      "message": "Not A whole lot Jimbo. Business and Friendly Huh? what do you want :)",
+      "sendDate": 1679666025514
     }
   ],
   "topics": [
@@ -41,6 +47,33 @@
     {
       "id": 5,
       "name": "Condolences"
+    }
+  ],
+  "letterTopics": [
+    {
+      "letterId": 1,
+      "topicId": 1,
+      "id": 1
+    },
+    {
+      "letterId": 1,
+      "topicId": 2,
+      "id": 2
+    },
+    {
+      "letterId": 2,
+      "topicId": 5,
+      "id": 3
+    },
+    {
+      "letterId": 2,
+      "topicId": 3,
+      "id": 4
+    },
+    {
+      "letterId": 2,
+      "topicId": 4,
+      "id": 5
     }
   ]
 }

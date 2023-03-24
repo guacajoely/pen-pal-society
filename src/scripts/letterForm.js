@@ -1,6 +1,6 @@
 import { createAuthorDropdown, createRecipientDropdown } from "./createDropdowns.js"
-import { sendLetter } from "./dataAccess.js"
-import { createTopicRadios } from "./topicRadios.js"
+import { getLetters, getTopics, sendLetter, sendLetterTopic } from "./dataAccess.js"
+import { createTopics } from "./createTopics.js"
 
 export const letterForm = () => {
     let html = `
@@ -14,7 +14,7 @@ export const letterForm = () => {
         </div>
         <div class="field">
             <h2>Topics</h2>
-            ${createTopicRadios()}
+            ${createTopics()}
         </div>
         <div class="field">
             <h2>Recipient</h2>
@@ -29,26 +29,47 @@ export const letterForm = () => {
 
 const mainContainer = document.querySelector("#container")
 
+
 mainContainer.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "letter-submit") {
         // Get what the user typed into the form fields
         const userAuthor = document.querySelector('select[id="dropdown-author"]').value
         const userRecipient = document.querySelector('select[id="dropdown-recipient"]').value
         const userMessage = document.querySelector("textarea[name='letterMessage']").value
-        const userTopic = document.querySelector("input[name='letterTopic']:checked").value
 
-        // Make an object out of the user input
+        //grab ALL checked checkboxes instead of single radio button
+        const checkedTopics = document.querySelectorAll("input[name='letterTopic']:checked")
+        const arrayOfUserTopics = Array.from(checkedTopics).map(x => x.value)
+
+        //we need to assign the ID manually now to attach the letterID to each letterTopic object
+        const currentLetters = getLetters()
+        const currentLetterId = currentLetters.length + 1
+
+        // Create a letter object out of the user input
         const dataToSendToAPI = {
+            id: currentLetterId,
             authorId: userAuthor,
             recipientId: userRecipient,
             message: userMessage,
             sendDate: (Date.now()),
-            topicId: userTopic
         }
 
-        console.log(dataToSendToAPI)
-
-        // Send the data to the API for permanent storage
+        // Send the letter to the API for permanent storage
         sendLetter(dataToSendToAPI)
+        console.log(`letter sent to ${userRecipient}`)
+
+        // Create a letterTopic objects out of the arrayOfUserTopics
+        for(const topic of arrayOfUserTopics){
+
+            const topicObject = {
+                letterId: currentLetterId,
+                topicId: parseInt(topic)
+            }
+
+            // Send the letterTopic to the API for permanent storage
+            sendLetterTopic(topicObject)
+            console.log(`letter has been marked with topic#${topic}`)
+            
+        }
     }
 })

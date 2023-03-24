@@ -1,11 +1,12 @@
-import { getLetters, getPenpals, getTopics } from "./dataAccess.js";
+import { getLetters, getLetterTopics, getPenpals, getTopics } from "./dataAccess.js";
 
 export const createLetterList = () => {
     const letters = getLetters()
     const penpals = getPenpals()
     const topics = getTopics()
+    const letterTopics = getLetterTopics()
 
-    let html = "<div id='letters-container>"
+    let html = "<div id='letters-container'>"
 
     const listItemsArray = letters.map(letter => {
 
@@ -17,9 +18,17 @@ export const createLetterList = () => {
             return parseInt(letter.authorId) === penpal.id
         })
 
-        const matchingTopic = topics.find((topic) => {
-            return parseInt(letter.topicId) === topic.id
-        })
+
+        const matchingTopics = []
+        for(const singleLetterTopic of letterTopics){
+            if(singleLetterTopic.letterId === letter.id){
+                for(const topic of topics){
+                    if(topic.id === singleLetterTopic.topicId){
+                        matchingTopics.push(topic.name)
+                    }
+                }
+            }
+        }
 
         return `<div class='letter'>
         
@@ -31,7 +40,7 @@ export const createLetterList = () => {
 
         Sent on ${new Date(letter.sendDate).toLocaleDateString()}<br><br>
 
-        Topic:  ${matchingTopic.name}
+        Topics:  ${matchingTopics.join(' ')}
         
         </div>`
     
