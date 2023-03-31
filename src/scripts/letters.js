@@ -32,11 +32,11 @@ export const createLetterList = () => {
 
         return `<div class='letter'>
         
-        Dear ${matchingRecipient.name} (${matchingRecipient.email}),<br><br>
+        <span class="bold">Dear ${matchingRecipient.name} </span>(${matchingRecipient.email}),<br><br>
 
-        ${letter.message}<br><br>
+        <strong>${letter.message}</strong><br><br>
 
-        Sincerely, ${matchingAuthor.name} (${matchingAuthor.email})<br><br>
+        <strong>Sincerely, ${matchingAuthor.name} </strong>(${matchingAuthor.email})<br><br>
 
         Sent on ${new Date(letter.sendDate).toLocaleDateString()}<br><br>
 

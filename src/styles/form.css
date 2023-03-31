@@ -25,7 +25,13 @@ li {
     margin-top: 20px;
     padding: 20px;
     border: thin dotted lightblue;
-    background-color: var(--example-gray-background);
+    background-color: white;
+    width: 400px;
+}
+
+.bold{
+    font-weight: 900;
+    color: black;
 }
 
 

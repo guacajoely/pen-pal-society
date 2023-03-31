@@ -9,6 +9,10 @@
     --example-gray-background: #ebe9ea;
 }
 
+body {
+    background-color: var(--example-gray-background);
+}
+
 main {
     margin-left: 20px;
 }
